@@ -1,6 +1,7 @@
 class ExercisesController < ApplicationController
 
-get '/exercises' do
-  erb :'/exercises'
-end
+  get '/exercises' do
+    @exercises = Exercise.all
+    erb :'exercises/index'
+  end
 end
