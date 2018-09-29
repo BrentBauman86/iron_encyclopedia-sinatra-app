@@ -15,7 +15,7 @@ class ExercisesController < ApplicationController
 
   post "/exercises/:id" do
     redirect_if_not_logged_in
-    @exercises = Exercise.find(params[:id])
+    @exercises = Exercise.find(:id => params[:id])
     unless Exercise.valid_params?(params)
       redirect "/exercises/#{@exercises.id}"
     end
