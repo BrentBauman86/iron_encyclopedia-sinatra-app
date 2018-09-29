@@ -1,5 +1,5 @@
 <% @exercises.each do |exercise|%><br>
-  <%= exercise.name %><br>
-  <%= exercise.muscle_group %><br>
-  <%= exercise.rep_range %><br>
+  <label>Exercise Name: </label><%= exercise.name %><br>
+  <label>Muscle Group: </label><%= exercise.muscle_group %><br>
+  <label>Rep Range: </label><%= exercise.rep_range %><br>
   <%end%>
