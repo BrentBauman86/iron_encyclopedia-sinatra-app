@@ -1,2 +1,6 @@
-class Exercises < ApplicationController
-end 
+class ExercisesController < ApplicationController
+
+get '/exercises' do
+  erb :'/exercises'
+end
+end
