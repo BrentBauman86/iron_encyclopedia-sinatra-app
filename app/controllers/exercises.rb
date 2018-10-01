@@ -6,9 +6,10 @@ class ExercisesController < ApplicationController
   end
 
   get "/exercises/:id/edit" do
+    # binding.pry
     @exercises = Exercise.find_by(id: params[:id])
 
-    if current_user.id == @exercises.user_id
+    if current_user == @exercises
       erb :'/exercises/edit'
     else
       redirect to '/exercises'
