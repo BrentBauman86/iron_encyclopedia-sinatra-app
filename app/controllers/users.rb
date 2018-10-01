@@ -29,7 +29,6 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-    binding.pry
     @user = User.find_by(:params => params[:username])
     if user && user.authenticate(params[:password])
       erb :exercises
