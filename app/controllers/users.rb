@@ -29,9 +29,10 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-    @user = User.find_by(:params => params[:username])
-    if user && user.authenticate(params[:password])
-      erb :exercises
+    user = User.find_by(params[:username])
+    if user
+      # && user.authenticate(params[:password])
+      redirect to :'/exercises'
     else
       redirect to '/login'
     end
@@ -42,7 +43,7 @@ class UsersController < ApplicationController
       session.destroy
       redirect to '/login'
     else
-      redirect to '/exercises'
+      redirect to '/login'
     end
   end
 end
