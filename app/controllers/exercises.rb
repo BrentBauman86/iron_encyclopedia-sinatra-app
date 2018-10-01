@@ -6,8 +6,6 @@ class ExercisesController < ApplicationController
   end
 
 
-
-
   get "/exercises/:id/edit" do
     @exercises = Exercise.find(params[:id])
     erb :'exercises/edit'
