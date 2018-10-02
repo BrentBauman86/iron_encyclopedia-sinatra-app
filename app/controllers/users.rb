@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+  get '/show' do
+    @user = current_user
+    erb :'/users/show'
+  end
+
   get '/signup' do
     if !logged_in?
       erb :"users/create_user"
@@ -7,11 +12,6 @@ class UsersController < ApplicationController
       redirect to '/exercises'
     end
   end
-
-   get '/show' do
-     @user = current_user
-     erb :'/users/show'
-   end
 
   post '/signup' do
     if params[:user].empty?
