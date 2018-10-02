@@ -5,6 +5,10 @@ class ExercisesController < ApplicationController
     erb :'exercises/index'
   end
 
+  get '/exercises/new' do
+  end
+
+
   get "/exercises/:id/edit" do
     # binding.pry
     @exercises = Exercise.find_by(id: params[:id])
