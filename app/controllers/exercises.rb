@@ -1,13 +1,14 @@
 class ExercisesController < ApplicationController
 
   get '/exercises' do
+    if logged_in?
     @exercises = Exercise.all
     erb :'exercises/index'
+  else
+    redirect to '/login'
   end
 
   get '/exercises/new' do
-    # @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-
     if !logged_in?
       redirect to '/login'
     else
@@ -30,9 +31,11 @@ end
       end
   end
 
-  get "/exercises/:id/edit" do
-    @exercise = Exercise.find_by(id: params[:id])
-
+  get '/exercises/:id/edit' do
+    if !logged_in?
+      redirect to '/login'
+    else
+    @exercise = Exercise.find_by_id(params[:id])
     if current_user.id == @exercise.user_id
       erb :'/exercises/edit'
     else
@@ -41,18 +44,26 @@ end
 end
 
   patch "/exercises/:id" do
-    binding.pry
-    @exercises = Exercise.find_by(id: params[:id])
-    redirect '/exercises'
-    if current_user != @exercises.user_id
-
-    if @exercises.update(name: params[:name], muscle_group: params[:muscle_group], rep_range: params[:rep_range])
-      flash[:message] = "Exercise was successfully updated"
-      redirect to "/exercises/#{@exercises.id}"
+    if logged_in?
+      if params[:exercise] == ""
+        redirect to "/exercises/#{params[:id]}/edit"
+      else
+        @exercise = Exercise.find_by_id(params[:id])
+        if @exercise && @exercise.user == current_user
+          if @exercise.update(params[:exercise])
+            redirect to "/exercises/#{@exercise.id}"
+          else
+            redirect to "/exercises/#{@exercise.id}/edit"
+          end
+        else
+          redirect to '/exercises'
+        end
+      end
     else
-      erb :"/exercises/edit"
+      redirect to '/login'
+            end
+          end
+        end
+      end
     end
   end
-end
-end
-end
