@@ -6,7 +6,9 @@ class ExercisesController < ApplicationController
   end
 
   get '/exercises/new' do
-    if logged_in?
+    # @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+
+    if !logged_in?
       redirect to '/login'
     else
       @exercises = Exercise.new
@@ -16,20 +18,19 @@ end
 
   post '/exercises' do
     if !params[:name].empty? || !params[:muscle_group].empty? || !params[:rep_range].empty? && logged_in?
-      @exercise = Exercise.create(params)
-      @exercise = current_user.exercise.build(params)
+      exercise = Exercise.new(params)
+      exercise = current_user.exercises.build(params)
       if exercise.valid?
         exercise.save
         flash[:message] = "New Exercise Created"
-        redirect "/exercises/#{current_user.id}"
+        redirect "/exercises"
       else
         flash[:message] = "Error Creating Course"
-        redirect "/exercises/#{current_user.id}"
+        redirect "/exercises"
       end
   end
 
   get "/exercises/:id/edit" do
-    # binding.pry
     @exercises = Exercise.find_by(id: params[:id])
 
     if current_user == @exercises
