@@ -1,5 +1,6 @@
 <h2>List of Exercises for <%=current_user.username%></h2>
 <% @exercises.each do |exercise|%><br>
+
   <label>Exercise Name: </label><%= exercise.name %><br>
   <label>Muscle Group: </label><%= exercise.muscle_group %><br>
   <label>Rep Range: </label><%= exercise.rep_range %><br>

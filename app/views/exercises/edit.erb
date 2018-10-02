@@ -1,7 +1,7 @@
 <!-- <h1><%= Edit <%= @exercise.name%></h1> -->
 <!-- <h1><%= Edit <%= @exercise.muscle_group%></h1> -->
 <!-- <h1><%= Edit <%= @exercise.rep_range%></h1> -->
-
+<h1>Edit Exercise</h1>
 <form action="/exercises/<%=@exercise.id%>" method="POST">
   <input type="hidden" name="_method" id="hidden" value="PATCH">
   <label>Exercise Name</label>
