@@ -34,9 +34,10 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-    user = User.find_by(params[:username])
-    if user
-      # && user.authenticate(params[:password])
+    binding.pry
+    user = User.find_by(params[:user])
+    if user && user.authenticate(params[:user])
+      session[:user_id] = user.id
       redirect to :'/exercises'
     else
       redirect to '/login'

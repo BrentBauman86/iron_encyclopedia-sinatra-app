@@ -46,7 +46,7 @@ end
   patch "/exercises/:id" do
     if logged_in?
       if params[:exercise] == ""
-        redirect to "/exercises/#{params[:id]}/edit"
+        redirect to "/exercises/#{@exercise.id}/edit"
       else
         @exercise = Exercise.find_by_id(params[:id])
         if @exercise && @exercise.user == current_user
