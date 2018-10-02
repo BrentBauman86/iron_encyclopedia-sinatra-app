@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
    get '/show' do
-     @user = User.find_by(params[:id])
+     @user = current_user
      erb :'/users/show'
    end
 

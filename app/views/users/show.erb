@@ -1,4 +1,8 @@
 <h2>Hello <%=current_user.username%>, check out your exercise library</h2>
   <% @user.exercises.each do |exercise| %>
-    <%=exercise.name%>
-        <% end %>
+    <label>Name: </label><%=exercise.name%>
+    <br>
+    <label>Muscle Group: </label><%=exercise.muscle_group%>
+    <br>
+    <label>Rep Range: </label><%=exercise.rep_range%>
+    <% end %>
