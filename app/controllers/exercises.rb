@@ -12,8 +12,11 @@ class ExercisesController < ApplicationController
       @exercise = Exercise.new
       erb :'/exercises/new'
   end
-end 
+end
 
+  post '/exercises' do
+
+  end
 
   get "/exercises/:id/edit" do
     # binding.pry
