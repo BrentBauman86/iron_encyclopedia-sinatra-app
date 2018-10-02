@@ -22,7 +22,7 @@ end
 
     if @exercises.update(name: params[:name], muscle_group: params[:muscle_group], rep_range: params[:rep_range])
       flash[:message] = "Exercise was successfully updated"
-      redirect "/exercises/#{@exercises.id}"
+      redirect to "/exercises/#{@exercises.id}"
     else
       erb :"/exercises/edit"
     end
