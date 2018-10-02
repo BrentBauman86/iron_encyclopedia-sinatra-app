@@ -6,7 +6,13 @@ class ExercisesController < ApplicationController
   end
 
   get '/exercises/new' do
+    if !logged_in?
+      redirect to '/login'
+    else
+      @exercise = Exercise.new
+      erb :'/exercises/new'
   end
+end 
 
 
   get "/exercises/:id/edit" do
