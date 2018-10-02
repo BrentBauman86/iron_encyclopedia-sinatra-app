@@ -8,6 +8,11 @@ class UsersController < ApplicationController
     end
   end
 
+   get '/show' do
+     @user = User.find_by(params[:id])
+     erb :'/users/show'
+   end
+
   post '/signup' do
     if params[:user].empty?
       redirect to '/signup'
