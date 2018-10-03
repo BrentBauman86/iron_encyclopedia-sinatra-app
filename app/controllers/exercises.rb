@@ -7,6 +7,7 @@ class ExercisesController < ApplicationController
   else
     redirect to '/login'
   end
+end
 
   get '/exercises/new' do
     if !logged_in?
@@ -66,4 +67,3 @@ end
         end
       end
     end
-  end
