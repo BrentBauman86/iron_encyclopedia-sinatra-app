@@ -1,4 +1,12 @@
 <h2>Welcome to the library of iron <%=current_user.username%></h2>
+<% if logged_in? %>
+    <a href="/users/show">Access Personal Library</a>
+    <br>
+   <% else %>
+   <a href="/signup">Not <%=current_user.username%>??  Shame on you and login to your own account!</a>
+   <br>
+   <%end%>
+
 <% @exercises.each do |exercise|%><br>
 
   <label>Exercise Name: </label><%= exercise.name %><br>

@@ -5,6 +5,15 @@ class UsersController < ApplicationController
     erb :'/users/show'
   end
 
+  get '/users/show' do
+    if logged_in?
+      @user = current_user
+      erb :'/users/show'
+    else
+      erb :'/login'
+    end
+  end
+
   get '/signup' do
     if !logged_in?
       erb :"users/create_user"
@@ -34,7 +43,7 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-    binding.pry 
+    binding.pry
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
