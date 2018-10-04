@@ -33,39 +33,10 @@ end
     end
   end
 
-#   get '/exercises/:id/edit' do
-#     binding.pry
-#     if !logged_in?
-#       redirect to '/login'
-#     else
-#     @exercise = Exercise.find_by_id(id: params[:id])
-#     if current_user.id == @exercise.user_id
-#       erb :'/exercises/edit'
-#     else
-#       redirect to '/exercises'
-#     end
-#   end
-# end
-#
-#   patch "/exercises/:id" do
-#     if logged_in?
-#       if params[:exercise] == ""
-#         redirect to "/exercises/#{@exercise.id}/edit"
-#       else
-#         @exercise = Exercise.find_by_id(params[:id])
-#         if @exercise && @exercise.user == current_user
-#           if @exercise.update(params[:exercise])
-#             redirect to "/exercises/#{@exercise.id}"
-#           else
-#             redirect to "/exercises/#{@exercise.id}/edit"
-#           end
-#         else
-#           redirect to '/exercises'
-#         end
-#       end
-#     else
-#       redirect to '/login'
-#             end
-#           end
-    
-    end
+  get '/exercises/:id/edit' do
+    if !logged_in
+      redirect to '/login'
+    else
+      @exercise = Exercise.find_by(user: params[:user_id])
+  end
+end 
