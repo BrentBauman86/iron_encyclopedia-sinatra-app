@@ -37,6 +37,7 @@ end
     if !logged_in
       redirect to '/login'
     else
-      @exercise = Exercise.find_by(user: params[:user_id])
+      @exercise = Exercise.find_by(id: params[:id])
+      
   end
-end 
+end

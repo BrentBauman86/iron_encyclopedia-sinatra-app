@@ -1,15 +1,18 @@
 <h2> Edit Exercise </h2>
 
-<form action="/exercises/<%=@exercise.id%>/edit" method="POST">
-  <input id="hidden" type="hidden" name="_method" value="PATCH">
+<form action="/exercises/<%=@exercise.id%>" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
   <input type="text" name="name" value="<%= @exercise.name %>">
+  <input type="submit" value="Update Name" >
   <input type="text" name="muscle_group" value="<%= @exercise.muscle_group %>">
+  <input type="submit" value="Update Muscle Group">
   <input type="integer" name="rep_range" value="<%= @exercise.rep_range %>">
+  <input type="integer" value="Update Rep Range">
 
-  <input type="submit" value="Edit">
+  <input type="submit" value="Update Exercise">
 </form>
 
-<!-- <form action="/exercises/<%= @exercise.id %>" method="post">
+<form action="/exercises/<%= @exercise.id %>" method="post">
   <input type="hidden" name="_method" value="delete">
-  <input type="submit" name="" value="Delete this exercise">
-</form> -->
+  <input type="submit" value="Delete Exercise">
+</form>
