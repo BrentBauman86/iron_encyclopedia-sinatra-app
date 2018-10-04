@@ -48,6 +48,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect to :'/exercises'
     else
+      flash[:message] = "eerrrrrttttttt dickhead"
       redirect to '/login'
     end
   end
