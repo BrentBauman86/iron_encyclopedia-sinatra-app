@@ -34,10 +34,14 @@ end
   end
 
   get '/exercises/:id' do
+    if !logged_in?
+      redirect to '/login'
+    else
     @exercise = Exercise.find(params[:id])
 
     erb :'/exercises/show'
   end
+end 
 
   get '/exercises/:id/edit' do
     if !logged_in?
