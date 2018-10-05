@@ -33,22 +33,29 @@ end
     end
   end
 
+  get '/exercises/:id' do
+    @exercise = Exercise.find(params[:id])
+
+    erb :'/exercises/show'
+  end
+
   get '/exercises/:id/edit' do
     if !logged_in?
       redirect to '/login'
-    if
-      @exercise = Exercise.find_by(params[:user_id])
-      current_user.id == @exercise.user_id
+    end
+    @exercise = Exercise.find(params[:id])
+      if current_user.id == @exercise.user_id
       erb :'/exercises/edit'
     else
       redirect to '/exercises'
     end
-  end
 end
 
     patch '/exercises/:id' do
       if !logged_in?
         redirect to '/login'
+      end
+        @exercise = Exercise.find(params[:id])
       if @exercise.update(name: params[:name], muscle_group: params[:muscle_group], rep_range: params[:rep_range])
         redirect to "/exercises/#{@exercise.id}"
       else
@@ -56,4 +63,3 @@ end
       end
     end
   end
-end
