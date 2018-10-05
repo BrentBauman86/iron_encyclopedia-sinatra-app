@@ -34,17 +34,17 @@ end
   end
 
   get '/exercises/:id/edit' do
-    binding.pry
     if !logged_in?
       redirect to '/login'
-    elsif
-      @exercise = Exercise.find_by(id: params[:id])
+    if
+      @exercise = Exercise.find_by(params[:user_id])
       current_user.id == @exercise.user_id
       erb :'/exercises/edit'
     else
       redirect to '/exercises'
     end
   end
+end
 
     patch '/exercises/:id' do
       if !logged_in?
