@@ -23,9 +23,9 @@ end
       exercise = Exercise.new(params)
       exercise = current_user.exercises.build(params)
       if exercise.valid?
-        exercise.save
-        flash[:message] = "New Exercise Created"
-        redirect "/exercises"
+         exercise.save
+         flash[:message] = "New Exercise Created"
+         redirect "/exercises"
       else
         flash[:message] = "Error Creating Course"
         redirect "/exercises"
@@ -37,11 +37,11 @@ end
     if !logged_in?
       redirect to '/login'
     else
-    @exercise = Exercise.find(params[:id])
+      @exercise = Exercise.find_by(id: params[:id])
 
     erb :'/exercises/show'
   end
-end 
+end
 
   get '/exercises/:id/edit' do
     if !logged_in?
@@ -53,7 +53,7 @@ end
     else
       redirect to '/exercises'
     end
-end
+  end
 
     patch '/exercises/:id' do
       if !logged_in?
