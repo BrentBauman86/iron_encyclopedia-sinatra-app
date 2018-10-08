@@ -4,8 +4,6 @@
     <br><br>
     <a href="/exercises/new">Create A New Exercise</a>
     <br><br>
-    <a href="/exercises/edit">Edit Exercise</a>
-    <br>
    <% else %>
 
    <a href="/signup">Not <%=current_user.username%>??  Shame on you and login to your own account!</a>
@@ -16,7 +14,10 @@
   <label>Exercise Name: </label><%= exercise.name %><br>
   <label>Muscle Group: </label><%= exercise.muscle_group %><br>
   <label>Rep Range: </label><%= exercise.rep_range %><br>
+  <a href="/exercises/<%=exercise.id%>/edit">Edit Exercise</a>
+  <br>
   <%end%>
+
 
   <br>
   <a href="/">Home Page</a>

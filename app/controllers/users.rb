@@ -1,4 +1,7 @@
+
 class UsersController < ApplicationController
+  # use Rack::Flash
+
 
   get '/show' do
     @user = current_user
@@ -48,7 +51,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect to :'/exercises'
     else
-      flash[:message] = "noep"
+      flash[:message] = "nope, try again please"
       redirect to '/login'
     end
   end

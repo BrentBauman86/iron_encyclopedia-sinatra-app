@@ -1,4 +1,6 @@
+
 class ExercisesController < ApplicationController
+# use Rack::Flash
 
   get '/exercises' do
     if logged_in?
@@ -27,7 +29,7 @@ end
          flash[:message] = "New Exercise Created"
          redirect "/exercises"
       else
-        flash[:message] = "Error Creating Course"
+        flash[:message] = "Error Creating exercise"
         redirect "/exercises"
       end
     end
@@ -37,7 +39,7 @@ end
     if !logged_in?
       redirect to '/login'
     end
-      @exercise = Exercise.find_by(id: params[:id])
+      @exercise = Exercise.find(params[:id])
     erb :'/exercises/show'
   end
 
