@@ -26,10 +26,9 @@ end
       exercise = current_user.exercises.build(params)
       if exercise.valid?
          exercise.save
-         flash[:message] = "New Exercise Created"
+         flash[:message] = "*New Exercise Created*"
          redirect "/exercises"
       else
-        flash[:message] = "Error Creating exercise"
         redirect "/exercises"
       end
     end
