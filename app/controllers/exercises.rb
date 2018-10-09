@@ -67,4 +67,16 @@ end
         erb :'/exercises/edit'
       end
     end
+
+    delete '/exercises/:id' do
+      if !logged_in?
+        redirect to '/login'
+      end
+      @exercise = Exercise.find(params[:id])
+      if current_user.id == @exercise.user_id && @exercise.destroy
+      else
+        flash[:message] = "Not your exercise to delete sucka!"
+      end
+        redirect to "/exercises/#{current_user.id}"
+      end
   end
