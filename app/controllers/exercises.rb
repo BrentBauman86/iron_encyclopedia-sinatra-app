@@ -61,7 +61,7 @@ end
       end
         @exercise = Exercise.find(params[:id])
       if @exercise.update(name: params[:name], muscle_group: params[:muscle_group], rep_range: params[:rep_range])
-        flash[:message] = "updated exercise"
+        flash[:message] = "*updated exercise*"
         redirect to "/exercises/#{@exercise.id}"
       else
         erb :'/exercises/edit'
@@ -74,9 +74,10 @@ end
       end
       @exercise = Exercise.find(params[:id])
       if current_user.id == @exercise.user_id && @exercise.destroy
+        flash[:message] = "*byebye exercise*"
       else
         flash[:message] = "Not your exercise to delete sucka!"
       end
-        redirect to "/exercises/#{current_user.id}"
+        redirect to "/exercises"
       end
   end
