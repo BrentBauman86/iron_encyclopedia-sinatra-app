@@ -1,10 +1,5 @@
 class UsersController < ApplicationController
 
-  get '/show' do
-    @user = current_user
-    erb :'/users/show'
-  end
-
   get '/users/show' do
     if logged_in?
       @user = current_user
