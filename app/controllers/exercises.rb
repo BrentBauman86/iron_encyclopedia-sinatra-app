@@ -73,8 +73,6 @@ end
         @exercise = Exercise.find(params[:id])
       if current_user.id == @exercise.user_id && @exercise.destroy
         flash[:message] = "*byebye exercise*"
-      else
-        flash[:message] = "Not your exercise to delete sucka!"
       end
         redirect to "/exercises"
       end
